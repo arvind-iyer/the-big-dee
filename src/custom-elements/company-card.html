@@ -6,6 +6,8 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
 
 <dom-module id="company-card">
     <template>
@@ -30,39 +32,42 @@
             }
         </style>
 
-        <paper-card image="" elevation="1" class="flexchild" animated-shadow="false">
-            <iron-image class="center" src="http://lorempixel.com/400/400"></iron-image>
-            <h1 class="center">[[title]]</h1>
-            <div class="center">
-                <iron-icon class="star" icon="star"></iron-icon>
-                <iron-icon class="star" icon="star"></iron-icon>
-                <iron-icon class="star" icon="star"></iron-icon>
-                <iron-icon class="star" icon="star"></iron-icon>
-                <iron-icon class="star" icon="star"></iron-icon>
-            </div>
-            <div class="card-content">
-                <table class="center">
-                    <tr>
-                        <td><b>Expected Gain:</b></td>
-                        <td>[[expectedGain]]%</td>
-                    </tr>
-                    <tr>
-                        <td><b>Actual Gain:</b></td>
-                        <td>[[actualGain]]%</td>
-                    </tr>
-                    <tr>
-                        <td><b>Consistency:</b></td>
-                        <td>[[consistency]]</td>
-                    </tr>
-                </table>
-            </div>
+        <iron-pages id="pageSelector" selected="0">
+            <div>
+                <paper-card image="" elevation="1" class="flexchild" animated-shadow="false">
+                    <iron-image class="center" src="http://lorempixel.com/400/400"></iron-image>
+                    <h1 class="center">[[title]]</h1>
+                    <div class="center">
+                        <iron-icon class="star" icon="star"></iron-icon>
+                        <iron-icon class="star" icon="star"></iron-icon>
+                        <iron-icon class="star" icon="star"></iron-icon>
+                        <iron-icon class="star" icon="star"></iron-icon>
+                        <iron-icon class="star" icon="star"></iron-icon>
+                    </div>
+                    <div class="card-content">
+                        <table class="center">
+                            <tr>
+                                <td><b>Expected Gain:</b></td>
+                                <td>[[expectedGain]]%</td>
+                            </tr>
+                            <tr>
+                                <td><b>Actual Gain:</b></td>
+                                <td>[[actualGain]]%</td>
+                            </tr>
+                            <tr>
+                                <td><b>Consistency:</b></td>
+                                <td>[[consistency]]</td>
+                            </tr>
+                        </table>
+                    </div>
 
-            <div class="card-actions">
-                <paper-button class="center">View Details</paper-button>
+                    <div class="card-actions">
+                        <paper-button on-click="changePage" class="center">View Details</paper-button>
+                    </div>
+                </paper-card>
             </div>
-        </paper-card>
-
-
+            <div>Three</div>
+        </iron-pages>
 
     </template>
 
@@ -75,8 +80,13 @@
                 expectedGain: String,
                 actualGain: String,
                 consistency: Boolean
+            },
+            changePage: function () {
+                console.log("change page");
+                this.$.pageSelector.selectNext();
             }
         });
+
 
 
     </script>
