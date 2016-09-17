@@ -9,58 +9,62 @@
 
 <dom-module id="company-card">
     <template>
-    <style include="shared-styles">
-    :host {
-        display: block;
-        padding: 10px;
-    }
-    .flex-horizontal {
-        @apply(--layout-horizontal);
-    }
+        <style include="shared-styles">
+            :host {
+                display: block;
+                padding: 10px;
+            }
 
-    .flexchild {
-        @apply(--layout-flex);
-        margin-right: 10px;
-    }
-    .center {
-        @apply(--layout-horizontal);
-        @apply(--layout-center-justified);
-    }
-    </style>
+            .flex-horizontal {
+                @apply(--layout-horizontal);
+            }
 
-    <paper-card image="" elevation="1" class="flexchild" animated-shadow="false">
-        <iron-image class="center" src="http://lorempixel.com/400/400"></iron-image>
-        <h1 class="center">Title</h1>
-        <div class="center">
-            <iron-icon class="star" icon="star"></iron-icon>
-            <iron-icon class="star" icon="star"></iron-icon>
-            <iron-icon class="star" icon="star"></iron-icon>
-            <iron-icon class="star" icon="star"></iron-icon>
-            <iron-icon class="star" icon="star"></iron-icon>
-        </div>
-        <div class="card-content">
-            <table class="center">
-                <tr>
-                    <td><b>Expected Gain:</b></td>
-                    <td>[[expectedGain]]%</td>
-                </tr>
-                <tr>
-                    <td><b>Actual Gain:</b></td>
-                    <td>[[actualGain]]%</td>
-                </tr>
-                <tr>
-                    <td><b>Consistency:</b></td>
-                    <td>[[consistency]]</td>
-                </tr>
-            </table>
-        </div>
+            .flexchild {
+                @apply(--layout-flex);
+                margin-right: 10px;
+            }
 
-        <div class="card-actions">
-            <paper-button class="center">View Details</paper-button>
-        </div>
-    </paper-card>
+            .center {
+                @apply(--layout-horizontal);
+                @apply(--layout-center-justified);
+            }
+        </style>
 
-  </template>
+        <paper-card image="" elevation="1" class="flexchild" animated-shadow="false">
+            <iron-image class="center" src="http://lorempixel.com/400/400"></iron-image>
+            <h1 class="center">[[title]]</h1>
+            <div class="center">
+                <iron-icon class="star" icon="star"></iron-icon>
+                <iron-icon class="star" icon="star"></iron-icon>
+                <iron-icon class="star" icon="star"></iron-icon>
+                <iron-icon class="star" icon="star"></iron-icon>
+                <iron-icon class="star" icon="star"></iron-icon>
+            </div>
+            <div class="card-content">
+                <table class="center">
+                    <tr>
+                        <td><b>Expected Gain:</b></td>
+                        <td>[[expectedGain]]%</td>
+                    </tr>
+                    <tr>
+                        <td><b>Actual Gain:</b></td>
+                        <td>[[actualGain]]%</td>
+                    </tr>
+                    <tr>
+                        <td><b>Consistency:</b></td>
+                        <td>[[consistency]]</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card-actions">
+                <paper-button class="center">View Details</paper-button>
+            </div>
+        </paper-card>
+
+
+
+    </template>
 
     <script>
         Polymer({
@@ -73,5 +77,7 @@
                 consistency: Boolean
             }
         });
+
+
     </script>
 </dom-module>
