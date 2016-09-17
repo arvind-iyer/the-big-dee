@@ -18,6 +18,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="./custom-elements/company-card.html">
 <link rel="import" href="custom-elements/my-tooltip.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-document.html">
+
 
 <dom-module id="my-app">
     <template>
@@ -46,23 +49,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <div class="title center"><h1>Robo Advisors Ranking 2016</h1></div>
         </paper-toolbar>
 
-        <div class="flex-horizontal center">
-            <company-card id="NABS1" title="NABS" rating="3" expected-gain="12" actual-gain="9"
-                          consistency="false"></company-card>
-            <my-tooltip for="NABS1">Hello</my-tooltip>
-            <company-card title="NABS2" rating="3" expected-gain="12" actual-gain="9"
-                          consistency="false"></company-card>
-            <company-card title="NABS3" rating="3" expected-gain="12" actual-gain="9"
-                          consistency="false"></company-card>
-            <company-card title="NABS3" rating="3" expected-gain="12" actual-gain="9"
-                          consistency="false"></company-card>
-        </div>
+        <firebase-app auth-domain="bigdee-b4a26.firebaseapp.com"
+            database-url="https://bigdee-b4a26.firebaseio.com"
+            api-key="">
+        </firebase-app>
+        <firebase-document
+            path="/roboAdvisors"
+            data="{{companyData}}" log="true">
+            <div class="flex-horizontal center">
+                <template is="dom-repeat" items="{{toArr(companyData)}}"> 
+                    <company-card title="{{item}}" rating="{{companyData.rating}}" expected-gain="{{getExpectedGain(companyData, item)}}" 
+                        actual-gain="{{getActualGain(companyData, item)}}"
+                        consistency="{{getConsistency(companyData, item)}}"
+                        imgurl="{{getImage(companyData, item)}}" ></company-card>
+                </template>
+    </div>
+
+    </firebase-document>
+
 
     </template>
 
     <script>
         Polymer({
-            is: 'my-app'
+            is: 'my-app',
+            toArr: function(obj) {
+                return Object.keys(obj);
+            },
+            getExpectedGain: function(companies, name) {
+                return companies[name].expectedGain;
+            },
+            getActualGain: function(companies, name) {
+                return companies[name].actualGain;
+            },
+            getConsistency: function(companies, name) {
+                return companies[name].consistency;
+            },
+            getImage: function(companies, name) {
+                return companies[name].imgurl;
+            }
+
         });
     </script>
 </dom-module>
