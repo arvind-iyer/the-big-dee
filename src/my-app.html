@@ -18,6 +18,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="./custom-elements/company-card.html">
 <link rel="import" href="custom-elements/my-tooltip.html">
+<link rel="import" href="custom-elements/details-card.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-app.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-document.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
@@ -69,10 +70,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                           imgurl="{{getImage(companyData, item)}}"></company-card>
                         </template>
                     </div>
-
                 </firebase-document>
             </div>
-            <div>Three</div>
+            <div>
+                <details-card></details-card>
+            </div>
         </iron-pages>
 
 
@@ -97,10 +99,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 return companies[name].imgurl;
             },
             changePage: function () {
-                console.log(window.location.href.toString().includes("details"));
-                if (window.location.href.toString().includes("details")){
-                    if(window.location.href.toString().includes("details"))
-                    console.log("change page")
+                if (window.location.href.toString().includes("details/")) {
                     return 1;
                 }
                 return 0;
