@@ -31,7 +31,7 @@
         </style>
 
         <paper-card image="" elevation="1" class="flexchild" animated-shadow="false">
-            <iron-image class="center" src="http://lorempixel.com/400/400"></iron-image>
+            <iron-image class="center" src="{{imgurl}}"></iron-image>
             <h1 class="center">[[title]]</h1>
             <div class="center">
                 <iron-icon class="star" icon="star"></iron-icon>
@@ -74,10 +74,9 @@
                 rating: String,
                 expectedGain: String,
                 actualGain: String,
-                consistency: Boolean
+                consistency: Boolean,
+                imgurl: String
             }
         });
-
-
     </script>
 </dom-module>
