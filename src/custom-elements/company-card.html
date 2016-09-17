@@ -1,0 +1,77 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="company-card">
+    <template>
+    <style include="shared-styles">
+    :host {
+        display: block;
+        padding: 10px;
+    }
+    .flex-horizontal {
+        @apply(--layout-horizontal);
+    }
+
+    .flexchild {
+        @apply(--layout-flex);
+        margin-right: 10px;
+    }
+    .center {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
+    }
+    </style>
+
+    <paper-card image="" elevation="1" class="flexchild" animated-shadow="false">
+        <iron-image class="center" src="http://lorempixel.com/400/400"></iron-image>
+        <h1 class="center">Title</h1>
+        <div class="center">
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+        </div>
+        <div class="card-content">
+            <table class="center">
+                <tr>
+                    <td><b>Expected Gain:</b></td>
+                    <td>[[expectedGain]]%</td>
+                </tr>
+                <tr>
+                    <td><b>Actual Gain:</b></td>
+                    <td>[[actualGain]]%</td>
+                </tr>
+                <tr>
+                    <td><b>Consistency:</b></td>
+                    <td>[[consistency]]</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card-actions">
+            <paper-button class="center">View Details</paper-button>
+        </div>
+    </paper-card>
+
+  </template>
+
+    <script>
+        Polymer({
+            is: 'company-card',
+            properties: {
+                title: String,
+                rating: String,
+                expectedGain: String,
+                actualGain: String,
+                consistency: Boolean
+            }
+        });
+    </script>
+</dom-module>

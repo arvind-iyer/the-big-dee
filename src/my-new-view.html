@@ -6,7 +6,8 @@
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-
+<link rel="import" href="./custom-elements/company-card.html">
+<link rel="import" href="custom-elements/my-tooltip.html">
 
 <dom-module id="my-new-view">
     <!-- Defines the element's style and local DOM -->
@@ -34,127 +35,11 @@
 
         <h1 class="center">Robo Advisor Rankings 2017</h1>
         <div class="flex-horizontal">
-            <paper-card image="" elevation="1" class="flexchild" animated-shadow="false">
-                <iron-image class="center" src="http://lorempixel.com/400/400"></iron-image>
-                <h1 class="center">Title</h1>
-                <div class="center">
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                </div>
-                <div class="card-content">
-                    <table class="center">
-                        <tr>
-                            <td><b>Expected Gain:</b></td>
-                            <td>10%</td>
-                        </tr>
-                        <tr>
-                            <td><b>Actual Gain:</b></td>
-                            <td>9%</td>
-                        </tr>
-                        <tr>
-                            <td><b>Consistency:</b></td>
-                            <td>Negative</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="card-actions">
-                    <paper-button class="center">View Details</paper-button>
-                </div>
-            </paper-card>
-            <p></p>
-
-            <paper-card image="" elevation="1" class="flexchild" animated-shadow="false">
-                <iron-image class="center" src="http://lorempixel.com/400/400" width="100%" height="400px"></iron-image>
-                <h1 class="center">Title</h1>
-                <div class="center">
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                </div>
-                <div class="card-content">
-                    <table class="center" style="width: 100%">
-                        <tr>
-                            <td><b>Expected Gain:</b></td>
-                            <td>10%</td>
-                        </tr>
-                        <tr>
-                            <td><b>Actual Gain:</b></td>
-                            <td>9%</td>
-                        </tr>
-                        <tr>
-                            <td><b>Consistency:</b></td>
-                            <td>Negative</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="card-actions ">
-                    <paper-button class="center">View Details</paper-button>
-
-                </div>
-            </paper-card>
-
-            <paper-card image="" elevation="1" class="flexchild" animated-shadow="false">
-                <iron-image class="center" src="http://lorempixel.com/400/400" width="100%" height="400px"></iron-image>
-                <h1 class="center">Title</h1>
-                <div class="center">
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                    <iron-icon class="star" icon="star"></iron-icon>
-                </div>
-                <div class="card-content">
-                    <table class="center">
-                        <tr>
-                            <td><b>Expected Gain:</b></td>
-                            <td>10%</td>
-                        </tr>
-                        <tr>
-                            <td><b>Actual Gain:</b></td>
-                            <td>9%</td>
-                        </tr>
-                        <tr>
-                            <td><b>Consistency:</b></td>
-                            <td>Negative</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="card-actions ">
-                    <paper-button class="center">View Details</paper-button>
-                </div>
-            </paper-card>
-
-           <!-- <template is="dom-bind">
-                <firebase-collection
-                        order-by-child="hello"
-                        limit-to-first="2"
-                        location="https://bigdee-b4a26.firebaseio.com/roboAdvisors"
-                        data="{{roboAdvisors}}"></firebase-collection>
-                <template is="dom-repeat" items="[[roboAdvisors]]" as="roboAdvisor">
-                    <h4>Test</h4>
-                    Height: <span>[[roboAdvisor.hello]]</span>m
-                </template>
-    </template>-->
-
-
-    <template is="dom-bind">
-                <firebase-collection
-                        order-by-child="height"
-                        limit-to-first="3"
-                        location="https://dinosaur-facts.firebaseio.com/dinosaurs"
-                        data="{{dinosaurs}}"></firebase-collection>
-                <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
-                    <h4>[[dinosaur.__firebaseKey__]]</h4>
-                    Height: <span>[[dinosaur.height]]</span>m
-                </template>
-    </template>
-    </div>
+            <company-card id="NABS1" title="NABS" rating="3" expected-gain="12" actual-gain="9" consistency="false"></company-card>
+            <my-tooltip for="NABS1">Hello</my-tooltip>
+            <company-card title="NABS2" rating="3" expected-gain="12" actual-gain="9" consistency="false"></company-card>
+            <company-card title="NABS3" rating="3" expected-gain="12" actual-gain="9" consistency="false"></company-card>
+        </div>
 
 
 
