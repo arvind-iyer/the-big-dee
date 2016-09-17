@@ -31,15 +31,15 @@
                 @apply(--layout-center-justified);
             }
         </style>
-        <div><h1>{{getTitle()}}</h1>
+        <div class=""><h1>{{getTitle()}}</h1>
             <iron-image src="http://lorempixel.com/400/400"></iron-image>
         </div>
-        <div>
+        <div class="">
             <h1 on-click="toggle">Fees</h1>
             <iron-collapse id="collapse">
                 <div>
                     <paper-card>
-                        <div class="card-content">Some conasdaklsdkasjdnfkjasbdfkjtent</div>
+                        <div class="card-content">{{thisCompany.getTitle().fees}}</div>
                     </paper-card>
                 </div>
             </iron-collapse>
@@ -67,11 +67,14 @@
     <script>
         Polymer({
             is: 'details-card',
-            getTitle: function () {
+            properties: {
+                thisCompany: Object
+            },
+            getTitle: function() {
                 var list = window.location.href.toString().split("/");
                 return list[list.length - 1];
             },
-            toggle: function () {
+            toggle: function() {
                 this.$.collapse.toggle();
             }
         });

@@ -6,7 +6,7 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
-
+<link rel="import" href="../../bower_components/paper-progress/paper-progress.html">
 
 <dom-module id="company-card">
     <template>
@@ -29,16 +29,17 @@
                 @apply(--layout-horizontal);
                 @apply(--layout-center-justified);
             }
+            paper-progress {
+              --paper-progress-active-color: var(--paper-teal-900);
+              --paper-progress-height: 7px;
+            }   
         </style>
         <paper-card image="" elevation="1" class="flexchild" animated-shadow="false">
             <iron-image class="center" src="{{imgurl}}"></iron-image>
             <h1 class="center">[[title]]</h1>
             <div class="center">
-                <iron-icon class="star" icon="star"></iron-icon>
-                <iron-icon class="star" icon="star"></iron-icon>
-                <iron-icon class="star" icon="star"></iron-icon>
-                <iron-icon class="star" icon="star"></iron-icon>
-                <iron-icon class="star" icon="star"></iron-icon>
+                <paper-progress value="[[rating]]"></paper-progress>
+                
             </div>
             <div class="card-content">
                 <table class="center">
@@ -58,7 +59,8 @@
             </div>
 
             <div class="card-actions">
-                <a href="/details/[[title]]"><paper-button on-click="changePage" class="center">View Details</paper-button></a>
+                <paper-button  on-click="openDetails" class="center">View Details</paper-button></a>
+                
             </div>
         </paper-card>
 
@@ -74,6 +76,9 @@
                 actualGain: String,
                 consistency: Boolean,
                 imgurl: String
+            },
+            openDetails: function() {
+                location.href = "/details/" + this.title;
             }
         });
     </script>
