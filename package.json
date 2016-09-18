@@ -1,0 +1,25 @@
+{
+  "name": "the-big-dee",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/PolymerElements/polymer-starter-kit.svg?branch=master)](https://travis-ci.org/PolymerElements/polymer-starter-kit)",
+  "main": "serve.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "bower": "1.7.9",
+    "polymer-cli": "0.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "postinstall": "bower install && polymer serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arvind-iyer/the-big-dee.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arvind-iyer/the-big-dee/issues"
+  },
+  "homepage": "https://github.com/arvind-iyer/the-big-dee#readme"
+}
