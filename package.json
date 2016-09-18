@@ -11,7 +11,7 @@
   "devDependencies": {},
   "scripts": {
     "postinstall": "bower install",
-    "start": "polymer serve -p 80"
+    "start": "polymer serve "
   },
   "repository": {
     "type": "git",
