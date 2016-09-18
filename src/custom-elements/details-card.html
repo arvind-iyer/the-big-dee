@@ -31,33 +31,42 @@
                 @apply(--layout-center-justified);
             }
         </style>
-        <div class=""><h1>{{getTitle()}}</h1>
-            <iron-image src="http://lorempixel.com/400/400"></iron-image>
+        <div class=""><h1>[[title]]</h1>
+            <iron-image src="[[data.imgurl]]"></iron-image>
         </div>
         <div class="">
-            <h1 on-click="toggle">Fees</h1>
-            <iron-collapse id="collapse">
+            <h1 on-click="toggle" id="fees">Fees:</h1>
+            <iron-collapse id="_fees">
                 <div>
                     <paper-card>
-                        <div class="card-content">{{thisCompany.getTitle().fees}}</div>
+                        <div class="card-content">[[data.fees]]</div>
                     </paper-card>
                 </div>
             </iron-collapse>
 
-            <h1 on-click="toggle">Fees</h1>
-            <iron-collapse id="collapse">
+            <h1 on-click="toggle" id="riskOptions">Risk Options:</h1>
+            <iron-collapse id="_riskOptions">
                 <div>
                     <paper-card>
-                        <div class="card-content">Some conasdaklsdkasjdnfkjasbdfkjtent</div>
+                        <div class="card-content">[[data.riskOptions]]</div>
                     </paper-card>
                 </div>
             </iron-collapse>
 
-            <h1 on-click="toggle">Fees</h1>
-            <iron-collapse id="collapse">
+            <h1 on-click="toggle" id="security">Security:</h1>
+            <iron-collapse id="_security">
                 <div>
                     <paper-card>
-                        <div class="card-content">Some conasdaklsdkasjdnfkjasbdfkjtent</div>
+                        <div class="card-content">[[data.security]]</div>
+                    </paper-card>
+                </div>
+            </iron-collapse>
+
+            <h1 on-click="toggle" id="userReviews">User Reviews:</h1>
+            <iron-collapse id="_userReviews">
+                <div>
+                    <paper-card>
+                        <div class="card-content">[[data.userReviews]]</div>
                     </paper-card>
                 </div>
             </iron-collapse>
@@ -68,15 +77,16 @@
         Polymer({
             is: 'details-card',
             properties: {
-                thisCompany: Object
+                data: Object,
+                title: String
             },
-            getTitle: function() {
-                var list = window.location.href.toString().split("/");
-                return list[list.length - 1];
-            },
-            toggle: function() {
-                this.$.collapse.toggle();
+            toggle: function(e) {
+                console.log(e.target.id);
+                var ele = document.querySelector("#_fees");
+                this.$['_'+ e.target.id].toggle();
             }
+
         });
+
     </script>
 </dom-module>
