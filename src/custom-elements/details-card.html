@@ -7,7 +7,7 @@
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
-
+<link href="https://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet">
 
 <dom-module id="details-card">
     <template>
@@ -20,58 +20,88 @@
             .flex-horizontal {
                 @apply(--layout-horizontal);
             }
-
+            .flex-vertical {
+                @apply(--layout-vertical);
+            }
             .flexchild {
                 @apply(--layout-flex);
                 margin-right: 10px;
             }
+            .flex-1 {
+                @apply(--layout-flex-1);
+            }
+            .flex-2 {
+                @apply(--layout-flex-2);
+            }
 
             .center {
                 @apply(--layout-horizontal);
-                @apply(--layout-center-justified);
+                @apply(--layout-center);
+            }
+            .maincard {
+                padding-left: 15%;
+            }
+            .cardinfo {
+                margin-left: 50px;
+
+            }
+            .company-name {
+                color: var(--paper-blue-800);
+                text-transform: uppercase;
+                font-family: 'Scope One', serif;
+                font-size: 44px;
+            }
+            .datahead {
+                text-decoration: underline;
+                color: var(--paper-grey-800);
             }
         </style>
-        <div class=""><h1>[[title]]</h1>
-            <iron-image src="[[data.imgurl]]"></iron-image>
-        </div>
-        <div class="">
-            <h1 on-click="toggle" id="fees">Fees:</h1>
-            <iron-collapse id="_fees">
-                <div>
-                    <paper-card>
-                        <div class="card-content">[[data.fees]]</div>
-                    </paper-card>
-                </div>
-            </iron-collapse>
+        <paper-card class="flex-vertical center maincard flex-1" image="[[data.imgurl]]" elevation="1" animated-shadow="true">
+            <!--<div class="card-content">
+                <h1>[[title]]</h1>
+            <!--<iron-image src="[[data.imgurl]]"></iron-image>-->
+            <div class="card-content cardinfo flex-2">
+                <h1 class="company-name">[[title]]</h1>
+                <h1 class="datahead" on-click="toggle" id="fees">Fees:</h1>
+                <iron-collapse id="_fees">
+                    <div>
+                        <paper-card>
+                            <div class="card-content">[[data.fees]]</div>
+                        </paper-card>
+                    </div>
+                </iron-collapse>
 
-            <h1 on-click="toggle" id="riskOptions">Risk Options:</h1>
-            <iron-collapse id="_riskOptions">
-                <div>
-                    <paper-card>
-                        <div class="card-content">[[data.riskOptions]]</div>
-                    </paper-card>
-                </div>
-            </iron-collapse>
+                <h1 class="datahead" on-click="toggle" id="riskOptions">Risk Options:</h1>
+                <iron-collapse id="_riskOptions">
+                    <div>
+                        <paper-card>
+                            <div class="card-content">[[data.riskOptions]]</div>
+                        </paper-card>
+                    </div>
+                </iron-collapse>
 
-            <h1 on-click="toggle" id="security">Security:</h1>
-            <iron-collapse id="_security">
-                <div>
-                    <paper-card>
-                        <div class="card-content">[[data.security]]</div>
-                    </paper-card>
-                </div>
-            </iron-collapse>
+                <h1 class="datahead" on-click="toggle" id="security">Security:</h1>
+                <iron-collapse id="_security">
+                    <div>
+                        <paper-card>
+                            <div class="card-content">[[data.security]]</div>
+                        </paper-card>
+                    </div>
+                </iron-collapse>
 
-            <h1 on-click="toggle" id="userReviews">User Reviews:</h1>
-            <iron-collapse id="_userReviews">
-                <div>
-                    <paper-card>
-                        <div class="card-content">[[data.userReviews]]</div>
-                    </paper-card>
-                </div>
-            </iron-collapse>
+                <h1 class="datahead" on-click="toggle" id="userReviews">User Reviews:</h1>
+                <iron-collapse id="_userReviews">
+                    <div>
+                        <paper-card>
+                            <div class="card-content">[[data.userReviews]]</div>
+                        </paper-card>
+                    </div>
+                </iron-collapse>
 
-        </div>
+            </div>
+            </paper-card>
+        
+        
     </template>
     <script>
         Polymer({
@@ -83,10 +113,9 @@
             toggle: function(e) {
                 console.log(e.target.id);
                 var ele = document.querySelector("#_fees");
-                this.$['_'+ e.target.id].toggle();
+                this.$['_' + e.target.id].toggle();
             }
 
         });
-
     </script>
 </dom-module>

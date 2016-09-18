@@ -45,10 +45,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-horizontal);
                 @apply(--layout-center-justified);
             }
+
+            paper-toolbar {
+                text-transform: capitalize;
+            }
         </style>
         </div>
         <paper-toolbar>
-            <div class="title center"><h1>Robo Advisors Ranking 2016</h1></div>
+            <div class="title center"><h1>Robo-Advisors Ranking 2016</h1></div>
         </paper-toolbar>
 
 
@@ -70,70 +74,67 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                           imgurl="{{getImage(companyData, item)}}"
                                           onclick="setThisCompany"></company-card>
                         </template>
-                    </div>
+    </div>
 
-                </firebase-document>
-            </div>
-            <div>
-                <firebase-document
-                        path="/roboAdvisors/{{getTitle()}}"
-                        data="{{data}}" log="true">
-                            <details-card data="{{data}}" title="{{getTitle()}}"></details-card>
-                </firebase-document>
-            </div>
-        </iron-pages>
+    </firebase-document>
+    </div>
+    <div>
+        <firebase-document path="/roboAdvisors/{{getTitle()}}" data="{{data}}" log="true">
+            <details-card data="{{data}}" title="{{getTitle()}}"></details-card>
+        </firebase-document>
+    </div>
+    </iron-pages>
 
 
     </template>
     <script>
-
     </script>
     <script>
         var company = {};
         Polymer({
             is: 'my-app',
-            toArr: function (obj) {
+            toArr: function(obj) {
                 return Object.keys(obj);
             },
-            getRating: function (companies, name) {
+            getRating: function(companies, name) {
                 return companies[name].rating;
             },
-            getExpectedGain: function (companies, name) {
+            getExpectedGain: function(companies, name) {
                 return companies[name].expectedGain;
             },
-            getActualGain: function (companies, name) {
+            getActualGain: function(companies, name) {
                 return companies[name].actualGain;
             },
-            getConsistency: function (companies, name) {
+            getConsistency: function(companies, name) {
                 return companies[name].consistency;
             },
-            getImage: function (companies, name) {
+            getImage: function(companies, name) {
                 return companies[name].imgurl;
             },
-            changePage: function () {
+            changePage: function() {
                 if (window.location.href.toString().includes("details/")) {
                     return 1;
                 }
                 return 0;
             },
-            setThisCompany: function () {
+            setThisCompany: function() {
                 var app = document.querySelector('#app');
                 company = app.thisCompany;
                 document.querySelector('details-card').thisCompany = company;
             },
-            getThisCompany: function () {
+            getThisCompany: function() {
                 return company;
             },
-            getFees: function (companies, name) {
+            getFees: function(companies, name) {
                 return companies[name].fees;
             },
-            getRiskOptions: function (companies, name) {
+            getRiskOptions: function(companies, name) {
                 return companies[name].riskOptions;
             },
-            getSecurity: function (companies, name) {
+            getSecurity: function(companies, name) {
                 return companies[name].security;
             },
-            getUserReviews: function (companies, name) {
+            getUserReviews: function(companies, name) {
                 return companies[name].userReviews;
             },
             getTitle: function() {
@@ -141,6 +142,5 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 return list[list.length - 1];
             },
         });
-
     </script>
 </dom-module>
