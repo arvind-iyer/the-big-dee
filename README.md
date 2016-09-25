@@ -8,6 +8,7 @@ the content at the initial route requested by the user, along with fast subseque
 navigation by pre-caching the remaining components required by the app and
 progressively loading them on-demand as the user navigates through the app.
 
+
 The PRPL pattern, in a nutshell:
 
 * **Push** components required for the initial route
